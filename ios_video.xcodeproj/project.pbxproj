@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F305F77A154DE5C600B12721 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F779154DE5C600B12721 /* UIKit.framework */; };
+		F305F77C154DE5C600B12721 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F77B154DE5C600B12721 /* Foundation.framework */; };
+		F305F77E154DE5C600B12721 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F77D154DE5C600B12721 /* CoreGraphics.framework */; };
+		F305F784154DE5C600B12721 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F305F782154DE5C600B12721 /* InfoPlist.strings */; };
+		F305F786154DE5C600B12721 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F305F785154DE5C600B12721 /* main.m */; };
+		F305F78A154DE5C600B12721 /* mobsolAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F305F789154DE5C600B12721 /* mobsolAppDelegate.m */; };
+		F305F78D154DE5C600B12721 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F305F78B154DE5C600B12721 /* MainStoryboard.storyboard */; };
+		F305F790154DE5C600B12721 /* mobsolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F305F78F154DE5C600B12721 /* mobsolViewController.m */; };
+		F305F798154DE5C600B12721 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F797154DE5C600B12721 /* SenTestingKit.framework */; };
+		F305F799154DE5C600B12721 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F779154DE5C600B12721 /* UIKit.framework */; };
+		F305F79A154DE5C600B12721 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F77B154DE5C600B12721 /* Foundation.framework */; };
+		F305F7A2154DE5C600B12721 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F305F7A0154DE5C600B12721 /* InfoPlist.strings */; };
+		F305F7A5154DE5C600B12721 /* ios_videoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F305F7A4154DE5C600B12721 /* ios_videoTests.m */; };
+		F305F7CB154DE85D00B12721 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F7CA154DE85D00B12721 /* CoreMedia.framework */; };
+		F305F7CD154DE87100B12721 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F7CC154DE87100B12721 /* CoreVideo.framework */; };
+		F305F7CF154DE87F00B12721 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F7CE154DE87F00B12721 /* OpenGLES.framework */; };
+		F305F7D1154DE89200B12721 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F7D0154DE89200B12721 /* QuartzCore.framework */; };
+		F305F7D3154DE89800B12721 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F7D2154DE89800B12721 /* AVFoundation.framework */; };
+		F305F831154DECEB00B12721 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F822154DECC600B12721 /* libGPUImage.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F305F79B154DE5C600B12721 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F305F76C154DE5C600B12721 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F305F774154DE5C600B12721;
+			remoteInfo = ios_video;
+		};
+		F305F821154DECC600B12721 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F305F81C154DECC600B12721 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		F305F823154DECC600B12721 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F305F81C154DECC600B12721 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A34414DDB1EC00852800;
+			remoteInfo = GPUImageTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F305F775154DE5C600B12721 /* ios_video.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios_video.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F305F779154DE5C600B12721 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F305F77B154DE5C600B12721 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F305F77D154DE5C600B12721 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F305F781154DE5C600B12721 /* ios_video-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios_video-Info.plist"; sourceTree = "<group>"; };
+		F305F783154DE5C600B12721 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F305F785154DE5C600B12721 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F305F787154DE5C600B12721 /* ios_video-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ios_video-Prefix.pch"; sourceTree = "<group>"; };
+		F305F788154DE5C600B12721 /* mobsolAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobsolAppDelegate.h; sourceTree = "<group>"; };
+		F305F789154DE5C600B12721 /* mobsolAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mobsolAppDelegate.m; sourceTree = "<group>"; };
+		F305F78C154DE5C600B12721 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		F305F78E154DE5C600B12721 /* mobsolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobsolViewController.h; sourceTree = "<group>"; };
+		F305F78F154DE5C600B12721 /* mobsolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mobsolViewController.m; sourceTree = "<group>"; };
+		F305F796154DE5C600B12721 /* ios_videoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ios_videoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F305F797154DE5C600B12721 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		F305F79F154DE5C600B12721 /* ios_videoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios_videoTests-Info.plist"; sourceTree = "<group>"; };
+		F305F7A1154DE5C600B12721 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F305F7A3154DE5C600B12721 /* ios_videoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ios_videoTests.h; sourceTree = "<group>"; };
+		F305F7A4154DE5C600B12721 /* ios_videoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_videoTests.m; sourceTree = "<group>"; };
+		F305F7CA154DE85D00B12721 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F305F7CC154DE87100B12721 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		F305F7CE154DE87F00B12721 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F305F7D0154DE89200B12721 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F305F7D2154DE89800B12721 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F305F81C154DECC600B12721 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F305F772154DE5C600B12721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F305F7D3154DE89800B12721 /* AVFoundation.framework in Frameworks */,
+				F305F7D1154DE89200B12721 /* QuartzCore.framework in Frameworks */,
+				F305F7CF154DE87F00B12721 /* OpenGLES.framework in Frameworks */,
+				F305F7CD154DE87100B12721 /* CoreVideo.framework in Frameworks */,
+				F305F7CB154DE85D00B12721 /* CoreMedia.framework in Frameworks */,
+				F305F77A154DE5C600B12721 /* UIKit.framework in Frameworks */,
+				F305F77C154DE5C600B12721 /* Foundation.framework in Frameworks */,
+				F305F831154DECEB00B12721 /* libGPUImage.a in Frameworks */,
+				F305F77E154DE5C600B12721 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F305F792154DE5C600B12721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F305F798154DE5C600B12721 /* SenTestingKit.framework in Frameworks */,
+				F305F799154DE5C600B12721 /* UIKit.framework in Frameworks */,
+				F305F79A154DE5C600B12721 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F305F76A154DE5C600B12721 = {
+			isa = PBXGroup;
+			children = (
+				F305F7D2154DE89800B12721 /* AVFoundation.framework */,
+				F305F7D0154DE89200B12721 /* QuartzCore.framework */,
+				F305F7CE154DE87F00B12721 /* OpenGLES.framework */,
+				F305F7CC154DE87100B12721 /* CoreVideo.framework */,
+				F305F7CA154DE85D00B12721 /* CoreMedia.framework */,
+				F305F77F154DE5C600B12721 /* ios_video */,
+				F305F79D154DE5C600B12721 /* ios_videoTests */,
+				F305F778154DE5C600B12721 /* Frameworks */,
+				F305F776154DE5C600B12721 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F305F776154DE5C600B12721 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F305F775154DE5C600B12721 /* ios_video.app */,
+				F305F796154DE5C600B12721 /* ios_videoTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F305F778154DE5C600B12721 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F305F81C154DECC600B12721 /* GPUImage.xcodeproj */,
+				F305F779154DE5C600B12721 /* UIKit.framework */,
+				F305F77B154DE5C600B12721 /* Foundation.framework */,
+				F305F77D154DE5C600B12721 /* CoreGraphics.framework */,
+				F305F797154DE5C600B12721 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F305F77F154DE5C600B12721 /* ios_video */ = {
+			isa = PBXGroup;
+			children = (
+				F305F788154DE5C600B12721 /* mobsolAppDelegate.h */,
+				F305F789154DE5C600B12721 /* mobsolAppDelegate.m */,
+				F305F78B154DE5C600B12721 /* MainStoryboard.storyboard */,
+				F305F78E154DE5C600B12721 /* mobsolViewController.h */,
+				F305F78F154DE5C600B12721 /* mobsolViewController.m */,
+				F305F780154DE5C600B12721 /* Supporting Files */,
+			);
+			path = ios_video;
+			sourceTree = "<group>";
+		};
+		F305F780154DE5C600B12721 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F305F781154DE5C600B12721 /* ios_video-Info.plist */,
+				F305F782154DE5C600B12721 /* InfoPlist.strings */,
+				F305F785154DE5C600B12721 /* main.m */,
+				F305F787154DE5C600B12721 /* ios_video-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F305F79D154DE5C600B12721 /* ios_videoTests */ = {
+			isa = PBXGroup;
+			children = (
+				F305F7A3154DE5C600B12721 /* ios_videoTests.h */,
+				F305F7A4154DE5C600B12721 /* ios_videoTests.m */,
+				F305F79E154DE5C600B12721 /* Supporting Files */,
+			);
+			path = ios_videoTests;
+			sourceTree = "<group>";
+		};
+		F305F79E154DE5C600B12721 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F305F79F154DE5C600B12721 /* ios_videoTests-Info.plist */,
+				F305F7A0154DE5C600B12721 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F305F81D154DECC600B12721 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F305F822154DECC600B12721 /* libGPUImage.a */,
+				F305F824154DECC600B12721 /* GPUImageTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F305F774154DE5C600B12721 /* ios_video */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F305F7A8154DE5C600B12721 /* Build configuration list for PBXNativeTarget "ios_video" */;
+			buildPhases = (
+				F305F771154DE5C600B12721 /* Sources */,
+				F305F772154DE5C600B12721 /* Frameworks */,
+				F305F773154DE5C600B12721 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ios_video;
+			productName = ios_video;
+			productReference = F305F775154DE5C600B12721 /* ios_video.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F305F795154DE5C600B12721 /* ios_videoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F305F7AB154DE5C600B12721 /* Build configuration list for PBXNativeTarget "ios_videoTests" */;
+			buildPhases = (
+				F305F791154DE5C600B12721 /* Sources */,
+				F305F792154DE5C600B12721 /* Frameworks */,
+				F305F793154DE5C600B12721 /* Resources */,
+				F305F794154DE5C600B12721 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F305F79C154DE5C600B12721 /* PBXTargetDependency */,
+			);
+			name = ios_videoTests;
+			productName = ios_videoTests;
+			productReference = F305F796154DE5C600B12721 /* ios_videoTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F305F76C154DE5C600B12721 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = mobsol;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = F305F76F154DE5C600B12721 /* Build configuration list for PBXProject "ios_video" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F305F76A154DE5C600B12721;
+			productRefGroup = F305F776154DE5C600B12721 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F305F81D154DECC600B12721 /* Products */;
+					ProjectRef = F305F81C154DECC600B12721 /* GPUImage.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				F305F774154DE5C600B12721 /* ios_video */,
+				F305F795154DE5C600B12721 /* ios_videoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F305F822154DECC600B12721 /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = F305F821154DECC600B12721 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F305F824154DECC600B12721 /* GPUImageTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GPUImageTests.octest;
+			remoteRef = F305F823154DECC600B12721 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F305F773154DE5C600B12721 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F305F784154DE5C600B12721 /* InfoPlist.strings in Resources */,
+				F305F78D154DE5C600B12721 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F305F793154DE5C600B12721 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F305F7A2154DE5C600B12721 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F305F794154DE5C600B12721 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F305F771154DE5C600B12721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F305F786154DE5C600B12721 /* main.m in Sources */,
+				F305F78A154DE5C600B12721 /* mobsolAppDelegate.m in Sources */,
+				F305F790154DE5C600B12721 /* mobsolViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F305F791154DE5C600B12721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F305F7A5154DE5C600B12721 /* ios_videoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F305F79C154DE5C600B12721 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F305F774154DE5C600B12721 /* ios_video */;
+			targetProxy = F305F79B154DE5C600B12721 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F305F782154DE5C600B12721 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F305F783154DE5C600B12721 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F305F78B154DE5C600B12721 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F305F78C154DE5C600B12721 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		F305F7A0154DE5C600B12721 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F305F7A1154DE5C600B12721 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F305F7A6154DE5C600B12721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F305F7A7154DE5C600B12721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F305F7A9154DE5C600B12721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ios_video/ios_video-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../GPUImage/framework/**";
+				INFOPLIST_FILE = "ios_video/ios_video-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F305F7AA154DE5C600B12721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ios_video/ios_video-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../GPUImage/framework/**";
+				INFOPLIST_FILE = "ios_video/ios_video-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F305F7AC154DE5C600B12721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ios_video.app/ios_video";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ios_video/ios_video-Prefix.pch";
+				INFOPLIST_FILE = "ios_videoTests/ios_videoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F305F7AD154DE5C600B12721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ios_video.app/ios_video";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ios_video/ios_video-Prefix.pch";
+				INFOPLIST_FILE = "ios_videoTests/ios_videoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F305F76F154DE5C600B12721 /* Build configuration list for PBXProject "ios_video" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F305F7A6154DE5C600B12721 /* Debug */,
+				F305F7A7154DE5C600B12721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F305F7A8154DE5C600B12721 /* Build configuration list for PBXNativeTarget "ios_video" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F305F7A9154DE5C600B12721 /* Debug */,
+				F305F7AA154DE5C600B12721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F305F7AB154DE5C600B12721 /* Build configuration list for PBXNativeTarget "ios_videoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F305F7AC154DE5C600B12721 /* Debug */,
+				F305F7AD154DE5C600B12721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F305F76C154DE5C600B12721 /* Project object */;
+}
