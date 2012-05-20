@@ -43,57 +43,33 @@ NSString *const kMySobelEdgeDetectionFragmentShaderString = SHADER_STRING
      float bottomIntensity = texture2D(inputImageTexture, bottomTextureCoordinate).r;
      float bottomRightIntensity = texture2D(inputImageTexture, bottomRightTextureCoordinate).r;
 
-     float Gy = topLeftIntensity + 2.0 * topIntensity + topRightIntensity - bottomLeftIntensity - 2.0 * bottomIntensity - bottomRightIntensity;
+     float Gy = -topLeftIntensity - 2.0 * topIntensity - topRightIntensity + bottomLeftIntensity + 2.0 * bottomIntensity + bottomRightIntensity;
      float Gx = -bottomLeftIntensity - 2.0 * leftIntensity - topLeftIntensity + bottomRightIntensity + 2.0 * rightIntensity + topRightIntensity;
      
      float strength = length(vec2(Gx, Gy));
      
-     highp float edge_dir = atan(Gx, Gy) * 180.0 / M_PI;
-     edge_dir += 180.0;
+     highp float edge_dir = atan(Gy, Gx) * 180.0 / M_PI;
+
+     edge_dir += 180.0 + 22.5;
      edge_dir = mod(edge_dir, 180.0);
      
      // TODO: get rid of "if" block
      if (strength > 0.1) {
-/*
          // assign edge to range
-         if ((edge_dir <= 22.5) || (edge_dir > 157.5)) {
+         if (edge_dir <= 45.0) {
              edge_dir = 0.0;
              gl_FragColor = vec4(1.0, 1, 0, 1.0); // yellow
-         }
-         if ((edge_dir > 22.5) && (edge_dir <= 67.5)) {
+         } else if (edge_dir <= 90.0) {
              edge_dir = 45.0;
              gl_FragColor = vec4(0.0, 1.0, 0, 1.0); // green
-         }
-         if ((edge_dir > 67.5) && (edge_dir <= 112.5)) {
+         } else if (edge_dir <= 135.0) {
              edge_dir = 90.0;
              gl_FragColor = vec4(0.0, 0, 1.0, 1.0); // blue
-         }
-         if ((edge_dir > 112.5) && (edge_dir <= 157.5)) {
+         } else {
              edge_dir = 135.0;
              gl_FragColor = vec4(1.0, 0, 0, 1.0); // red
          }
-*/
-
-         // assign edge to range
-         if (((edge_dir < 22.5) && (edge_dir > -22.5)) || (edge_dir > 157.5) || (edge_dir < -157.5)) {
-             edge_dir = 0.0;
-             gl_FragColor = vec4(1.0, 1, 0, 1.0); // yellow
-         }
-         if (((edge_dir > 22.5) && (edge_dir < 67.5)) || ((edge_dir < -112.5) && (edge_dir > -157.5))) {
-             edge_dir = 45.0;
-             gl_FragColor = vec4(0.0, 1.0, 0, 1.0); // green
-         }
-         if (((edge_dir > 67.5) && (edge_dir < 112.5)) || ((edge_dir < -67.5) && (edge_dir > -112.5))) {
-             edge_dir = 90.0;
-             gl_FragColor = vec4(0.0, 0, 1.0, 1.0); // blue
-         }
-         if (((edge_dir > 112.5) && (edge_dir < 157.5)) || ((edge_dir < -22.5) && (edge_dir > -67.5))) {
-             edge_dir = 135.0;
-             gl_FragColor = vec4(1.0, 0, 0, 1.0); // red
-         }
-
-     }
-     else
+     } else
          gl_FragColor = vec4(0.0, 0, 0, 1.0); // black         
  }
  );
