@@ -12,8 +12,7 @@
 @interface mobsolViewController : UIViewController
 {
     GPUImageVideoCamera *videoCamera;
-    GPUImageOutput<GPUImageInput> *filter;
-    GPUImageMovieWriter *movieWriter;
+    
 }
 
 @end

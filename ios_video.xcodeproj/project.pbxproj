@@ -26,6 +26,9 @@
 		F305F7D1154DE89200B12721 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F7D0154DE89200B12721 /* QuartzCore.framework */; };
 		F305F7D3154DE89800B12721 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F7D2154DE89800B12721 /* AVFoundation.framework */; };
 		F305F831154DECEB00B12721 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F822154DECC600B12721 /* libGPUImage.a */; };
+		F305F839154FCB6800B12721 /* ConnCompFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F305F838154FCB6800B12721 /* ConnCompFilter.m */; };
+		F3DCACA81567B5AA00134670 /* MyCannyEdgeDetectionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F3DCACA71567B5AA00134670 /* MyCannyEdgeDetectionFilter.m */; };
+		F3DCACAB1567B5BD00134670 /* MySobelEdgeDetectionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F3DCACAA1567B5BD00134670 /* MySobelEdgeDetectionFilter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +81,12 @@
 		F305F7D0154DE89200B12721 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F305F7D2154DE89800B12721 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F305F81C154DECC600B12721 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+		F305F837154FCB6800B12721 /* ConnCompFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnCompFilter.h; sourceTree = "<group>"; };
+		F305F838154FCB6800B12721 /* ConnCompFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnCompFilter.m; sourceTree = "<group>"; };
+		F3DCACA61567B5AA00134670 /* MyCannyEdgeDetectionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCannyEdgeDetectionFilter.h; sourceTree = "<group>"; };
+		F3DCACA71567B5AA00134670 /* MyCannyEdgeDetectionFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCannyEdgeDetectionFilter.m; sourceTree = "<group>"; };
+		F3DCACA91567B5BD00134670 /* MySobelEdgeDetectionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySobelEdgeDetectionFilter.h; sourceTree = "<group>"; };
+		F3DCACAA1567B5BD00134670 /* MySobelEdgeDetectionFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySobelEdgeDetectionFilter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +164,12 @@
 				F305F78E154DE5C600B12721 /* mobsolViewController.h */,
 				F305F78F154DE5C600B12721 /* mobsolViewController.m */,
 				F305F780154DE5C600B12721 /* Supporting Files */,
+				F305F837154FCB6800B12721 /* ConnCompFilter.h */,
+				F305F838154FCB6800B12721 /* ConnCompFilter.m */,
+				F3DCACA61567B5AA00134670 /* MyCannyEdgeDetectionFilter.h */,
+				F3DCACA71567B5AA00134670 /* MyCannyEdgeDetectionFilter.m */,
+				F3DCACA91567B5BD00134670 /* MySobelEdgeDetectionFilter.h */,
+				F3DCACAA1567B5BD00134670 /* MySobelEdgeDetectionFilter.m */,
 			);
 			path = ios_video;
 			sourceTree = "<group>";
@@ -331,6 +346,9 @@
 				F305F786154DE5C600B12721 /* main.m in Sources */,
 				F305F78A154DE5C600B12721 /* mobsolAppDelegate.m in Sources */,
 				F305F790154DE5C600B12721 /* mobsolViewController.m in Sources */,
+				F305F839154FCB6800B12721 /* ConnCompFilter.m in Sources */,
+				F3DCACA81567B5AA00134670 /* MyCannyEdgeDetectionFilter.m in Sources */,
+				F3DCACAB1567B5BD00134670 /* MySobelEdgeDetectionFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
