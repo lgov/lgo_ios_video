@@ -8,6 +8,8 @@
 
 #import "MyCannyEdgeDetectionFilter.h"
 #import "MySobelEdgeDetectionFilter.h"
+#import "MyCannyNonMaxSuppressionFilter.h"
+#import "CannyEdgeTrackingFilter.h"
 #import "GPUImageGaussianBlurFilter.h"
 #import "GPUImageThresholdEdgeDetection.h"
 #import "GPUImageSketchFilter.h"
@@ -33,12 +35,23 @@
     // Second pass: run the Sobel edge detection on this blurred image
     edgeDetectionFilter = [[MySobelEdgeDetectionFilter alloc] init];
     [self addFilter:edgeDetectionFilter];
-    
-    // Texture location 0 needs to be the sharp image for both the blur and the second stage processing
     [blurFilter addTarget:edgeDetectionFilter];
     
+    // Third pass: trim down edges to one pixel thick
+    nonMaxSuppressionFilter = [[MyCannyNonMaxSuppressionFilter alloc] init];
+    [self addFilter:nonMaxSuppressionFilter];
+    [edgeDetectionFilter addTarget:nonMaxSuppressionFilter];
+
+    // Fourth pass: connect weak and strong edges
+
+#if 0
+    edgeTrackingFilter = [[CannyEdgeTrackingFilter alloc]init];
+    [self addFilter:edgeTrackingFilter];
+    [nonMaxSuppressionFilter addTarget:edgeTrackingFilter];
+#endif
+    
     self.initialFilters = [NSArray arrayWithObject:blurFilter];
-    self.terminalFilter = edgeDetectionFilter;
+    self.terminalFilter = nonMaxSuppressionFilter;
     
     self.blurSize = 1.5;
     self.threshold = 0.9;
@@ -59,24 +72,24 @@
     return blurFilter.blurSize;
 }
 
-- (void)setImageWidthFactor:(CGFloat)newValue;
+- (void)setTexelWidth:(CGFloat)newValue;
 {
-    edgeDetectionFilter.imageWidthFactor = newValue;
+    edgeDetectionFilter.texelWidth = newValue;
 }
 
-- (CGFloat)imageWidthFactor;
+- (CGFloat)texelWidth;
 {
-    return edgeDetectionFilter.imageWidthFactor;
+    return edgeDetectionFilter.texelWidth;
 }
 
-- (void)setImageHeightFactor:(CGFloat)newValue;
+- (void)setTexelHeight:(CGFloat)newValue;
 {
-    edgeDetectionFilter.imageHeightFactor = newValue;
+    edgeDetectionFilter.texelHeight = newValue;
 }
 
-- (CGFloat)imageHeightFactor;
+- (CGFloat)texelHeight;
 {
-    return edgeDetectionFilter.imageHeightFactor;
+    return edgeDetectionFilter.texelHeight;
 }
 
 - (void)setThreshold:(CGFloat)newValue;

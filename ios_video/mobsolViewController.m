@@ -9,6 +9,7 @@
 #import "mobsolViewController.h"
 #import "ConnCompFilter.h"
 #import "MyCannyEdgeDetectionFilter.h"
+#import "MySobelEdgeDetectionFilter.h"
 
 @interface mobsolViewController ()
 
@@ -19,33 +20,59 @@
 - (void)viewDidLoad
 {
     GPUImageOutput<GPUImageInput> *edge_filter;
-
-    [super viewDidLoad];
+    GPUImageMovieWriter *movieWriter;
     
-    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetiFrame1280x720 cameraPosition:AVCaptureDevicePositionBack];
+    [super viewDidLoad];
+
     edge_filter = [[MyCannyEdgeDetectionFilter alloc] init];
 
-    GPUImageRotationFilter *rotationFilter = [[GPUImageRotationFilter alloc] initWithRotation:kGPUImageRotateRight];
+    
+#if 0
+    GPUImagePicture *sourcePicture;
+    
+    NSArray *sysPaths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
+    NSString *docDirectory = [sysPaths objectAtIndex:0];
+    NSString *filePath = [NSString stringWithFormat:@"%@/test_small.png", docDirectory];
+    UIImage *inputImage = [[UIImage alloc] initWithContentsOfFile:filePath];
+    
+    sourcePicture = [[GPUImagePicture alloc] initWithImage:inputImage smoothlyScaleOutput:YES];
 
-    [videoCamera addTarget:rotationFilter];
-    [rotationFilter addTarget:edge_filter];
+    [sourcePicture addTarget:edge_filter];
+    [sourcePicture processImage];
+
+#endif
+
+    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetiFrame1280x720 cameraPosition:AVCaptureDevicePositionBack];
+    videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+
+    [videoCamera addTarget:edge_filter];
     GPUImageView *filterView = (GPUImageView *)self.view;
     [edge_filter addTarget:filterView];
 
-    [videoCamera startCameraCapture];
+#if 0
+    // In addition to displaying to the screen, write out a processed version of the movie to disk
+    NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
+    unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
+    NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
     
-    double delayToStartRecording = 0.5;
-    dispatch_time_t startTime = dispatch_time(DISPATCH_TIME_NOW, delayToStartRecording * NSEC_PER_SEC);
-    dispatch_after(startTime, dispatch_get_main_queue(), ^(void){
-        NSLog(@"Start recording");
+    movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(720.0, 1280.0)];
+    [edge_filter addTarget:movieWriter];
+#endif
+
+    [videoCamera startCameraCapture];
+#if 0
+    [movieWriter startRecording];
+    
+    double delayInSeconds = 10.0;
+    dispatch_time_t stopTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(stopTime, dispatch_get_main_queue(), ^(void){
         
-        double delayInSeconds = 10.0;
-        dispatch_time_t stopTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(stopTime, dispatch_get_main_queue(), ^(void) {
-            videoCamera.audioEncodingTarget = nil;
-            NSLog(@"Movie completed");
-        });
+        [edge_filter removeTarget:movieWriter];
+        videoCamera.audioEncodingTarget = nil;
+        [movieWriter finishRecording];
+        NSLog(@"Movie completed");
     });
+#endif
 }
 
 - (void)viewDidUnload

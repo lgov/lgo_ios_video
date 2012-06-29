@@ -11,11 +11,15 @@
 @class GPUImageGaussianBlurFilter;
 @class MySobelEdgeDetectionFilter;
 @class GPUImageSketchFilter;
+@class MyCannyNonMaxSuppressionFilter;
+@class CannyEdgeTrackingFilter;
 
 @interface MyCannyEdgeDetectionFilter : GPUImageFilterGroup
 {
     GPUImageGaussianBlurFilter *blurFilter;
     MySobelEdgeDetectionFilter *edgeDetectionFilter;
+    MyCannyNonMaxSuppressionFilter *nonMaxSuppressionFilter;
+    CannyEdgeTrackingFilter *edgeTrackingFilter;
 }
 
 // The image width and height factors tweak the appearance of the edges. By default, they match the filter size in pixels

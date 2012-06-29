@@ -10,12 +10,12 @@
 
 @interface MySobelEdgeDetectionFilter : GPUImageTwoPassFilter
 {
-    GLint imageWidthFactorUniform, imageHeightFactorUniform;
+    GLint texelWidthUniform, texelHeightUniform;
     BOOL hasOverriddenImageSizeFactor;
 }
 
-// The image width and height factors tweak the appearance of the edges. By default, they match the filter size in pixels
-@property(readwrite, nonatomic) CGFloat imageWidthFactor; 
-@property(readwrite, nonatomic) CGFloat imageHeightFactor; 
+// The texel width and height factors tweak the appearance of the edges. By default, they match the inverse of the filter size in pixels
+@property(readwrite, nonatomic) CGFloat texelWidth; 
+@property(readwrite, nonatomic) CGFloat texelHeight; 
 
 @end

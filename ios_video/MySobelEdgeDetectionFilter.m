@@ -28,8 +28,6 @@ NSString *const kMySobelEdgeDetectionFragmentShaderString = SHADER_STRING
  varying vec2 bottomRightTextureCoordinate;
  
  uniform sampler2D inputImageTexture;
- 
- const highp vec3 W = vec3(0.2125, 0.7154, 0.0721);
 
  void main()
  {
@@ -43,41 +41,26 @@ NSString *const kMySobelEdgeDetectionFragmentShaderString = SHADER_STRING
      float bottomIntensity = texture2D(inputImageTexture, bottomTextureCoordinate).r;
      float bottomRightIntensity = texture2D(inputImageTexture, bottomRightTextureCoordinate).r;
 
-     float Gy = -topLeftIntensity - 2.0 * topIntensity - topRightIntensity + bottomLeftIntensity + 2.0 * bottomIntensity + bottomRightIntensity;
+     // SobelVertical
+     float Gy = topLeftIntensity + 2.0 * topIntensity + topRightIntensity - bottomLeftIntensity - 2.0 * bottomIntensity - bottomRightIntensity;
+     // SobelHorizontal
      float Gx = -bottomLeftIntensity - 2.0 * leftIntensity - topLeftIntensity + bottomRightIntensity + 2.0 * rightIntensity + topRightIntensity;
      
      float strength = length(vec2(Gx, Gy));
      
-     highp float edge_dir = atan(Gy, Gx) * 180.0 / M_PI;
-
+     float edge_dir = atan(Gy, Gx) * 180.0 / M_PI;
      edge_dir += 180.0 + 22.5;
      edge_dir = mod(edge_dir, 180.0);
+     edge_dir /= 180.0;
      
-     // TODO: get rid of "if" block
-     if (strength > 0.1) {
-         // assign edge to range
-         if (edge_dir <= 45.0) {
-             edge_dir = 0.0;
-             gl_FragColor = vec4(1.0, 1, 0, 1.0); // yellow
-         } else if (edge_dir <= 90.0) {
-             edge_dir = 45.0;
-             gl_FragColor = vec4(0.0, 1.0, 0, 1.0); // green
-         } else if (edge_dir <= 135.0) {
-             edge_dir = 90.0;
-             gl_FragColor = vec4(0.0, 0, 1.0, 1.0); // blue
-         } else {
-             edge_dir = 135.0;
-             gl_FragColor = vec4(1.0, 0, 0, 1.0); // red
-         }
-     } else
-         gl_FragColor = vec4(0.0, 0, 0, 1.0); // black         
+     gl_FragColor = vec4(vec3(strength), edge_dir);         
  }
  );
 
 @implementation MySobelEdgeDetectionFilter
 
-@synthesize imageWidthFactor = _imageWidthFactor; 
-@synthesize imageHeightFactor = _imageHeightFactor; 
+@synthesize texelWidth = _texelWidth; 
+@synthesize texelHeight = _texelHeight; 
 
 #pragma mark -
 #pragma mark Initialization and teardown
@@ -104,8 +87,8 @@ NSString *const kMySobelEdgeDetectionFragmentShaderString = SHADER_STRING
     
     hasOverriddenImageSizeFactor = NO;
     
-    imageWidthFactorUniform = [secondFilterProgram uniformIndex:@"imageWidthFactor"];
-    imageHeightFactorUniform = [secondFilterProgram uniformIndex:@"imageHeightFactor"];
+    texelWidthUniform = [secondFilterProgram uniformIndex:@"texelWidth"];
+    texelHeightUniform = [secondFilterProgram uniformIndex:@"texelHeight"];
     
     return self;
 }
@@ -114,37 +97,37 @@ NSString *const kMySobelEdgeDetectionFragmentShaderString = SHADER_STRING
 {
     if (!hasOverriddenImageSizeFactor)
     {
-        _imageWidthFactor = filterFrameSize.width;
-        _imageHeightFactor = filterFrameSize.height;
+        _texelWidth = 1.0 / filterFrameSize.width;
+        _texelHeight = 1.0 / filterFrameSize.height;
         
         [GPUImageOpenGLESContext useImageProcessingContext];
         [secondFilterProgram use];
-        glUniform1f(imageWidthFactorUniform, 1.0 / _imageWidthFactor);
-        glUniform1f(imageHeightFactorUniform, 1.0 / _imageHeightFactor);
+        glUniform1f(texelWidthUniform, _texelWidth);
+        glUniform1f(texelHeightUniform, _texelHeight);
     }
 }
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setImageWidthFactor:(CGFloat)newValue;
+- (void)setTexelWidth:(CGFloat)newValue;
 {
     hasOverriddenImageSizeFactor = YES;
-    _imageWidthFactor = newValue;
+    _texelWidth = newValue;
     
     [GPUImageOpenGLESContext useImageProcessingContext];
     [secondFilterProgram use];
-    glUniform1f(imageWidthFactorUniform, 1.0 / _imageWidthFactor);
+    glUniform1f(texelWidthUniform, _texelWidth);
 }
 
-- (void)setImageHeightFactor:(CGFloat)newValue;
+- (void)setTexelHeight:(CGFloat)newValue;
 {
     hasOverriddenImageSizeFactor = YES;
-    _imageHeightFactor = newValue;
+    _texelHeight = newValue;
     
     [GPUImageOpenGLESContext useImageProcessingContext];
     [secondFilterProgram use];
-    glUniform1f(imageHeightFactorUniform, 1.0 / _imageHeightFactor);
+    glUniform1f(texelHeightUniform, _texelHeight);
 }
 
 @end
