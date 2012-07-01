@@ -20,14 +20,40 @@
 - (void)viewDidLoad
 {
     GPUImageOutput<GPUImageInput> *edge_filter;
-    GPUImageMovieWriter *movieWriter;
     
     [super viewDidLoad];
 
     edge_filter = [[MyCannyEdgeDetectionFilter alloc] init];
 
+#define PHOTO 0
+#define CAMERA 0
+#define VIDEOFILE 1    
+
+#if VIDEOFILE
+    GPUImageMovie *movieFile;
     
-#if 0
+    NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
+    NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
+
+    movieFile = [[GPUImageMovie alloc] initWithURL:movieURL];
+    movieFile.runBenchmark = YES;
+    [movieFile addTarget:edge_filter];
+#endif
+    GPUImageView *filterView = (GPUImageView *)self.view;
+    [edge_filter addTarget:filterView];
+
+#if VIDEOFILE
+    [movieFile startProcessing];
+#endif
+
+#if CAMERA
+    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetiFrame1280x720 cameraPosition:AVCaptureDevicePositionBack];
+    videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    
+//    [videoCamera addTarget:edge_filter];
+#endif
+
+#if PHOTO
     GPUImagePicture *sourcePicture;
     
     NSArray *sysPaths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
@@ -38,32 +64,31 @@
     sourcePicture = [[GPUImagePicture alloc] initWithImage:inputImage smoothlyScaleOutput:YES];
 
     [sourcePicture addTarget:edge_filter];
-    [sourcePicture processImage];
 
+    [sourcePicture processImage];
 #endif
 
-    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPresetiFrame1280x720 cameraPosition:AVCaptureDevicePositionBack];
-    videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+#if CAMERA
+    [videoCamera addTarget:filterView];
 
-    [videoCamera addTarget:edge_filter];
-    GPUImageView *filterView = (GPUImageView *)self.view;
-    [edge_filter addTarget:filterView];
+#if 1
 
-#if 0
+    GPUImageMovieWriter *movieWriter;
+
     // In addition to displaying to the screen, write out a processed version of the movie to disk
     NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
     unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
     NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
     
     movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(720.0, 1280.0)];
-    [edge_filter addTarget:movieWriter];
+    [videoCamera addTarget:movieWriter];
 #endif
-
+    
     [videoCamera startCameraCapture];
-#if 0
+#if 1
     [movieWriter startRecording];
     
-    double delayInSeconds = 10.0;
+    double delayInSeconds = 15.0;
     dispatch_time_t stopTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(stopTime, dispatch_get_main_queue(), ^(void){
         
@@ -72,6 +97,7 @@
         [movieWriter finishRecording];
         NSLog(@"Movie completed");
     });
+#endif
 #endif
 }
 

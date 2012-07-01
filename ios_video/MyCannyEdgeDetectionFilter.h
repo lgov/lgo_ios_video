@@ -13,6 +13,7 @@
 @class GPUImageSketchFilter;
 @class MyCannyNonMaxSuppressionFilter;
 @class CannyEdgeTrackingFilter;
+@class CannyConvertEdgeToColorFilter;
 
 @interface MyCannyEdgeDetectionFilter : GPUImageFilterGroup
 {
@@ -20,6 +21,8 @@
     MySobelEdgeDetectionFilter *edgeDetectionFilter;
     MyCannyNonMaxSuppressionFilter *nonMaxSuppressionFilter;
     CannyEdgeTrackingFilter *edgeTrackingFilter;
+    CannyEdgeTrackingFilter *edgeTrackingFilter2;
+    CannyConvertEdgeToColorFilter *edgeToColorFilter;
 }
 
 // The image width and height factors tweak the appearance of the edges. By default, they match the filter size in pixels

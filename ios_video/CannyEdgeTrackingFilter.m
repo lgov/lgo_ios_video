@@ -9,6 +9,8 @@
 #import "CannyEdgeTrackingFilter.h"
 #import "GPUImage3x3ConvolutionFilter.h"
 
+
+// check http://http.developer.nvidia.com/GPUGems2/gpugems2_chapter40.html
 NSString *const kCannyEdgeTrackingFilterFragmentShaderString = SHADER_STRING
 (
  precision highp float;
@@ -29,47 +31,45 @@ NSString *const kCannyEdgeTrackingFilterFragmentShaderString = SHADER_STRING
   
  void main()
  {
-     float low_treshold = 20.0/255.0;
-     float high_treshold = 200.0/255.0;
+     const float low_treshold = 20.0/255.0;
+     const float high_treshold = 200.0/255.0;
 
-     float strength = texture2D(inputImageTexture, textureCoordinate).a;
+     // strength in r, edge_dir in a.
+     float strength = texture2D(inputImageTexture, textureCoordinate).r;
+     float edge_dir = texture2D(inputImageTexture, textureCoordinate).a;
+     
      if (strength <= low_treshold) {
-         gl_FragColor = vec4(vec3(0.0), 1.0); // black
+         gl_FragColor = vec4(0.0);
+         return; // early return, seems to have positive effect on frame rate!
+     }
+     if (strength >= high_treshold) {
+         gl_FragColor = vec4(vec3(1.0), edge_dir);
          return;
      }
+     // .g = 1.0 => strong edge, .g = 0.0 => weak edge
+     float strong_lefttop = texture2D(inputImageTexture, topLeftTextureCoordinate).g;
+     float strong_top = texture2D(inputImageTexture, topTextureCoordinate).g;
+     float strong_bottom = texture2D(inputImageTexture, bottomTextureCoordinate).g;
+     float strong_rightbottom = texture2D(inputImageTexture, bottomRightTextureCoordinate).g;
+     float sum1 = strong_lefttop + strong_top + strong_bottom + strong_rightbottom;
 
-     float topLeftStrength = texture2D(inputImageTexture, topLeftTextureCoordinate).a;
-     float topStrength = texture2D(inputImageTexture, topTextureCoordinate).a;
-     float topRightStrength = texture2D(inputImageTexture, topRightTextureCoordinate).a;
-     float leftStrength = texture2D(inputImageTexture, leftTextureCoordinate).a;
-     float rightStrength = texture2D(inputImageTexture, rightTextureCoordinate).a;
-     float bottomLeftStrength = texture2D(inputImageTexture, bottomLeftTextureCoordinate).a;
-     float bottomStrength = texture2D(inputImageTexture, bottomTextureCoordinate).a;
-     float bottomRightStrength = texture2D(inputImageTexture, bottomRightTextureCoordinate).a;
+     float strong_righttop = texture2D(inputImageTexture, topRightTextureCoordinate).g;
+     float strong_left = texture2D(inputImageTexture, leftTextureCoordinate).g;
+     float strong_right = texture2D(inputImageTexture, rightTextureCoordinate).g;
+     float strong_leftbottom = texture2D(inputImageTexture, bottomLeftTextureCoordinate).g;
+     float sum2 = strong_left + strong_leftbottom + strong_right + strong_righttop;
      
-     float new_strength = -1.0;
-     vec3 screen_color;
-
-     gl_FragColor = vec4(vec3(0.1), 1.0); // black
-     vec4 newStrength;
      if (edge_dir <= 45.0/180.0) { // 157,5..22,5
-         new_strength = max(leftStrength.r, rightStrength.r);
-         screen_color = vec3(1.0, 1.0, 0.0); // yellow         
+         strength = clamp(sum1 + strong_righttop + strong_leftbottom, 0.0, 1.0);
      } else if (edge_dir <= 90.0/180.0) { // 22,5..67,5
-         new_strength = max(bottomLeftStrength.r, topRightStrength.r);
-         screen_color = vec3(0.0, 1.0, 0.0); // green
+         strength = clamp(sum2 + strong_top + strong_bottom, 0.0, 1.0);
      } else if (edge_dir <= 135.0/180.0) { // 67,5..112,5
-         new_strength = max(topStrength.r, bottomStrength.r);
-         screen_color = vec3(0.0, 0.0, 1.0); // blue
+         strength = clamp(sum2 + strong_lefttop + strong_rightbottom, 0.0, 1.0);
      } else { // 112,5..157,5
-         new_strength = max(topLeftStrength.r, bottomRightStrength.r);
-         screen_color = vec3(1.0, 0.0, 0.0); // red
+         strength = clamp(sum1 + strong_left + strong_right, 0.0, 1.0);
      }
      
-     if (strength < new_strength)
-         screen_color = vec3(0.0); // black
-     
-     gl_FragColor = vec4(vec3(screen_color), 1.0);
+     gl_FragColor = vec4(vec2(strength), strength > high_treshold, edge_dir);
  }
  );
 

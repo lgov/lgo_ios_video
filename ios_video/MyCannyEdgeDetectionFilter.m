@@ -13,6 +13,7 @@
 #import "GPUImageGaussianBlurFilter.h"
 #import "GPUImageThresholdEdgeDetection.h"
 #import "GPUImageSketchFilter.h"
+#import "CannyConvertEdgeToColorFilter.h"
 
 @implementation MyCannyEdgeDetectionFilter
 
@@ -42,16 +43,22 @@
     [self addFilter:nonMaxSuppressionFilter];
     [edgeDetectionFilter addTarget:nonMaxSuppressionFilter];
 
-    // Fourth pass: connect weak and strong edges
-
-#if 0
+    // Fourth pass: connect weak and strong edges, multiple iterations
     edgeTrackingFilter = [[CannyEdgeTrackingFilter alloc]init];
     [self addFilter:edgeTrackingFilter];
     [nonMaxSuppressionFilter addTarget:edgeTrackingFilter];
-#endif
+
+    edgeTrackingFilter2 = [[CannyEdgeTrackingFilter alloc]init];
+    [self addFilter:edgeTrackingFilter2];
+    [edgeTrackingFilter addTarget:edgeTrackingFilter2];
     
-    self.initialFilters = [NSArray arrayWithObject:blurFilter];
-    self.terminalFilter = nonMaxSuppressionFilter;
+    // Show edges in color red, green, yellow, blue.
+    edgeToColorFilter = [[CannyConvertEdgeToColorFilter alloc]init];
+    [self addFilter:edgeToColorFilter];
+    [edgeTrackingFilter2 addTarget:edgeToColorFilter];
+
+    self.initialFilters = [NSArray arrayWithObject:edgeDetectionFilter];
+    self.terminalFilter = edgeToColorFilter;
     
     self.blurSize = 1.5;
     self.threshold = 0.9;

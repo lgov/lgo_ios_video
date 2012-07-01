@@ -27,6 +27,9 @@
 		F305F7D3154DE89800B12721 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F7D2154DE89800B12721 /* AVFoundation.framework */; };
 		F305F831154DECEB00B12721 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F305F822154DECC600B12721 /* libGPUImage.a */; };
 		F305F839154FCB6800B12721 /* ConnCompFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F305F838154FCB6800B12721 /* ConnCompFilter.m */; };
+		F33DAAEC159D0349009EEEE1 /* CannyEdgeTrackingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F33DAAEB159D0349009EEEE1 /* CannyEdgeTrackingFilter.m */; };
+		F37FD213156956D80056519A /* MyCannyNonMaxSuppressionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F37FD212156956D80056519A /* MyCannyNonMaxSuppressionFilter.m */; };
+		F38396B215A0356E00029939 /* CannyConvertEdgeToColorFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F38396B115A0356E00029939 /* CannyConvertEdgeToColorFilter.m */; };
 		F3DCACA81567B5AA00134670 /* MyCannyEdgeDetectionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F3DCACA71567B5AA00134670 /* MyCannyEdgeDetectionFilter.m */; };
 		F3DCACAB1567B5BD00134670 /* MySobelEdgeDetectionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F3DCACAA1567B5BD00134670 /* MySobelEdgeDetectionFilter.m */; };
 /* End PBXBuildFile section */
@@ -83,6 +86,12 @@
 		F305F81C154DECC600B12721 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		F305F837154FCB6800B12721 /* ConnCompFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnCompFilter.h; sourceTree = "<group>"; };
 		F305F838154FCB6800B12721 /* ConnCompFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnCompFilter.m; sourceTree = "<group>"; };
+		F33DAAEA159D0349009EEEE1 /* CannyEdgeTrackingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CannyEdgeTrackingFilter.h; sourceTree = "<group>"; };
+		F33DAAEB159D0349009EEEE1 /* CannyEdgeTrackingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CannyEdgeTrackingFilter.m; sourceTree = "<group>"; };
+		F37FD211156956D80056519A /* MyCannyNonMaxSuppressionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCannyNonMaxSuppressionFilter.h; sourceTree = "<group>"; };
+		F37FD212156956D80056519A /* MyCannyNonMaxSuppressionFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCannyNonMaxSuppressionFilter.m; sourceTree = "<group>"; };
+		F38396B015A0356E00029939 /* CannyConvertEdgeToColorFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; path = CannyConvertEdgeToColorFilter.h; sourceTree = "<group>"; };
+		F38396B115A0356E00029939 /* CannyConvertEdgeToColorFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CannyConvertEdgeToColorFilter.m; sourceTree = "<group>"; };
 		F3DCACA61567B5AA00134670 /* MyCannyEdgeDetectionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCannyEdgeDetectionFilter.h; sourceTree = "<group>"; };
 		F3DCACA71567B5AA00134670 /* MyCannyEdgeDetectionFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCannyEdgeDetectionFilter.m; sourceTree = "<group>"; };
 		F3DCACA91567B5BD00134670 /* MySobelEdgeDetectionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySobelEdgeDetectionFilter.h; sourceTree = "<group>"; };
@@ -158,6 +167,10 @@
 		F305F77F154DE5C600B12721 /* ios_video */ = {
 			isa = PBXGroup;
 			children = (
+				F38396B015A0356E00029939 /* CannyConvertEdgeToColorFilter.h */,
+				F38396B115A0356E00029939 /* CannyConvertEdgeToColorFilter.m */,
+				F33DAAEA159D0349009EEEE1 /* CannyEdgeTrackingFilter.h */,
+				F33DAAEB159D0349009EEEE1 /* CannyEdgeTrackingFilter.m */,
 				F305F788154DE5C600B12721 /* mobsolAppDelegate.h */,
 				F305F789154DE5C600B12721 /* mobsolAppDelegate.m */,
 				F305F78B154DE5C600B12721 /* MainStoryboard.storyboard */,
@@ -170,6 +183,8 @@
 				F3DCACA71567B5AA00134670 /* MyCannyEdgeDetectionFilter.m */,
 				F3DCACA91567B5BD00134670 /* MySobelEdgeDetectionFilter.h */,
 				F3DCACAA1567B5BD00134670 /* MySobelEdgeDetectionFilter.m */,
+				F37FD211156956D80056519A /* MyCannyNonMaxSuppressionFilter.h */,
+				F37FD212156956D80056519A /* MyCannyNonMaxSuppressionFilter.m */,
 			);
 			path = ios_video;
 			sourceTree = "<group>";
@@ -349,6 +364,9 @@
 				F305F839154FCB6800B12721 /* ConnCompFilter.m in Sources */,
 				F3DCACA81567B5AA00134670 /* MyCannyEdgeDetectionFilter.m in Sources */,
 				F3DCACAB1567B5BD00134670 /* MySobelEdgeDetectionFilter.m in Sources */,
+				F37FD213156956D80056519A /* MyCannyNonMaxSuppressionFilter.m in Sources */,
+				F33DAAEC159D0349009EEEE1 /* CannyEdgeTrackingFilter.m in Sources */,
+				F38396B215A0356E00029939 /* CannyConvertEdgeToColorFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
